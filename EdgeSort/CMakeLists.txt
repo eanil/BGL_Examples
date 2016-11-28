@@ -1,0 +1,16 @@
+cmake_minimum_required(VERSION 2.6)
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+
+Project(SortGraph)
+ 
+set(Boost_USE_MULTITHREADED ON)
+FIND_PACKAGE(Boost 1.38 COMPONENTS required)
+
+find_package(PCL 1.3 REQUIRED COMPONENTS common io )
+
+INCLUDE_DIRECTORIES(${INCLUDE_DIRECTORIES} ${Boost_INCLUDE_DIRS} ${PCL_INCLUDE_DIRS})
+LINK_DIRECTORIES(${LINK_DIRECTORIES} ${Boost_LIBRARY_DIRS} ${PCL_LIBRARY_DIRS})
+ 
+ADD_EXECUTABLE(SortGraph BGL_Edge_Sort.cpp)
+target_link_libraries(SortGraph)
